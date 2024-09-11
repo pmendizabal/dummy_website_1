@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Home Page</title>
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #0c0707;
+        }
+        header {
+            background-color: #050521;
+            color: white;
+            padding: 1px 10px;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        .hero {
+            background: url('{{ url_for('static', filename='images/background_connect.png') }}');
+            color: white;
+            text-align: center;
+            padding: 55px 20px;
+        }
+        .hero h2 {
+            margin: 0;
+            font-size: 4.5em;
+        }
+        .container {
+            padding: 20px;
+        }
+        .services {
+            display: flex;
+            justify-content: space-between; /* Changed from space-around to space-between */
+            flex-wrap: wrap;
+        }
+        .service {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 10px;
+            flex: 1 1 calc(25% - 20px); /* Adjusted for 4 items */
+            box-sizing: border-box;
+            text-align: center; /* Center the text */
+        }
+        .service h3 {
+            margin-top: 0;
+        }
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>ConectaMiPYME</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Sobre nosotros</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Bienvenido a tu Conexión Productiva</h2>
+            <p></p>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="services">
+            <div class="service">
+                <h3><a href="#">Educación Financiera</a></h3>
+                <p>Principios básicos y avanzados para fortalecer tus conocimientos.</p>
+            </div>
+            <div class="service">
+                <h3><a href="#">Cadena de Valor</a></h3>
+                <p>Consulta sobre tus actuales y posibles proveedores acorde a tu actividad económica.</p>
+            </div>
+            <div class="service">
+                <h3><a href="#">Financiamientos</a></h3>
+                <p>Próximamente podrás consultar el estado actual de tus financiamientos y nuevas oportunidades.</p>
+            </div>
+            <!-- New Service Point -->
+            <div class="service">
+                <h3><a href="#">Servicios de Tesorería</a></h3>
+                <p>Conoce como puedes invertir con nosotros.</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024. Todos los Derechos Reservados.</p>
+        <p></p>
+    </footer>
+</body>
+</html>
+
+
