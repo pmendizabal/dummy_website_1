@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Interactivo</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+
+        /* Responsive design for different screen sizes */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.2em;
+            }
+            #map {
+                height: 350px;
+            }
+            footer p {
+                font-size: 0.8em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1em;
+            }
+            #map {
+                height: 300px;
+            }
+            footer p {
+                font-size: 0.7em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Tu empresa está conectada con el Sector Semiconductor</h1>
+</header>
+
+<div id="map"></div>
+
+<footer>
+    <p>&copy; 2024 Todos los Derechos Reservados.</p>
+</footer>
+
+<!-- Leaflet.js library -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script>
+    // Initialize the map and set its view to zoom in on the marker location
+    var map = L.map('map').setView([29.1026, -110.97732], 7);  // Zoom level set to 10 for a closer view of the marker
+
+    // Add OpenStreetMap tiles to the map
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Define custom icon for energy plants (smaller for mobile)
+    var energyIcon = L.icon({
+        iconUrl: 'https://cdn-icons-png.flaticon.com/512/2647/2647046.png',  
+        iconSize: window.innerWidth <= 480 ? [30, 30] : [40, 40],  // Adjust icon size for mobile
+        iconAnchor: [16, 32],
+        popupAnchor: [0, -32]
+    });
+
+    var mineIcon = L.icon({
+        iconUrl: 'https://cdn-icons-png.freepik.com/512/5837/5837440.png',  
+        iconSize: window.innerWidth <= 480 ? [30, 30] : [40, 40],  // Adjust icon size for mobile
+        iconAnchor: [16, 32],
+        popupAnchor: [0, -32]
+    });
+
+    var portIcon = L.icon({
+        iconUrl: 'https://cdn-icons-png.flaticon.com/512/8552/8552053.png',  
+        iconSize: window.innerWidth <= 480 ? [30, 30] : [40, 40],  // Adjust icon size for mobile
+        iconAnchor: [16, 32],
+        popupAnchor: [0, -32]
+    });
+
+    var companyIcon = L.icon({
+        iconUrl: 'https://cdn-icons-png.flaticon.com/512/2761/2761008.png',  
+        iconSize: window.innerWidth <= 480 ? [30, 30] : [40, 40],  // Adjust icon size for mobile
+        iconAnchor: [16, 32],
+        popupAnchor: [0, -32]
+    });
+
+    // Add primary marker
+    var primaryMarker = L.marker([29.1026, -110.97732], {icon: companyIcon}).addTo(map);
+    primaryMarker.bindPopup("<b>Estamos acá!</b><br>").openPopup();
+
+    // Add secondary markers with custom icon
+    var secondaryMarker1 = L.marker([30.0622, -111.916503], {icon: energyIcon}).addTo(map);
+    secondaryMarker1.bindPopup("<b>Energy Plant 1</b><br>Location 1.");
+
+    var secondaryMarker2 = L.marker([27.93885, -110.180891], {icon: energyIcon}).addTo(map);
+    secondaryMarker2.bindPopup("<b>Energy Plant 2</b><br>Location 2.");
+
+    var secondaryMarker3 = L.marker([30.901046, -109.830322], {icon: mineIcon}).addTo(map);
+    secondaryMarker3.bindPopup("<b>Energy Plant 3</b><br>Location 3.");
+
+    var secondaryMarker4 = L.marker([27.919166, -110.8975], {icon: portIcon}).addTo(map);
+    secondaryMarker4.bindPopup("<b>Energy Plant 4</b><br>Location 4.");
+
+    var secondaryMarker5 = L.marker([31.306666, -113.54], {icon: portIcon}).addTo(map);
+    secondaryMarker5.bindPopup("<b>Energy Plant 4</b><br>Location 4.");
+
+    // Add mouseover and mouseout events for secondary markers
+    secondaryMarker1.on('mouseover', function() {
+        secondaryMarker1.bindPopup("<b>Unidad Ensambladora: Proveedor Actual</b>").openPopup();
+    });
+    secondaryMarker1.on('mouseout', function() {
+        secondaryMarker1.closePopup();
+    });
+
+    secondaryMarker2.on('mouseover', function() {
+        secondaryMarker2.bindPopup("<b>Unidad de Deposición: Proveedor Actual</b>").openPopup();
+    });
+    secondaryMarker2.on('mouseout', function() {
+        secondaryMarker2.closePopup();
+    });
+
+    secondaryMarker3.on('mouseover', function() {
+        secondaryMarker3.bindPopup("<b>Refinería de Silicio: Posible Proveedor</b>").openPopup();
+    });
+    secondaryMarker3.on('mouseout', function() {
+        secondaryMarker3.closePopup();
+    });
+
+    secondaryMarker4.on('mouseover', function() {
+        secondaryMarker4.bindPopup("<b>Puerto de Guaymas: Enlace Logístico</b>").openPopup();
+    });
+    secondaryMarker4.on('mouseout', function() {
+        secondaryMarker4.closePopup();
+    });
+
+    secondaryMarker5.on('mouseover', function() {
+        secondaryMarker5.bindPopup("<b>Puerto Peñasco: Enlace Logístico</b>").openPopup();
+    });
+    secondaryMarker5.on('mouseout', function() {
+        secondaryMarker5.closePopup();
+    });
+
+    // Add a legend box to the map
+    var legend = L.control({position: 'bottomleft'});
+
+    legend.onAdd = function (map) {
+        var div = L.DomUtil.create('div', 'legend');
+        div.innerHTML += '<h4>DEMO</h4>';
+        return div;
+    };
+
+    legend.addTo(map);
+
+    // Optional: Add a circle around the primary marker
+    var circle = L.circle([29.1026, -110.97732], {
+        color: 'blue',
+        fillColor: '#30f',
+        fillOpacity: 0.3,
+        radius: 500
+    }).addTo(map);
+
+    // Popup with coordinates when the map is clicked
+    map.on('click', function(e) {
+        alert("You clicked the map at " + e.latlng);
+    });
+</script>
+
+</body>
+</html>
+
+
+

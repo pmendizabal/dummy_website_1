@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capacitación</title>
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #050521;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        section {
+            padding: 20px;
+            margin: 20px;
+        }
+
+        .video-section, .info-section {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        /* Animation for the banner */
+        .banner {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .banner-text {
+            display: inline-block;
+            white-space: nowrap;
+            animation: moveText 10s linear infinite;
+        }
+
+        @keyframes moveText {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            /* For tablets and larger screens */
+            .container {
+                display: flex;
+                justify-content: space-between;
+                margin: 0 20px;
+            }
+
+            .left-side {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                margin-right: 20px;
+            }
+
+            .right-side {
+                flex: 1;
+            }
+
+            .video-section iframe {
+                height: 300px; /* Adjust video height for larger screens */
+            }
+        }
+
+        @media (min-width: 1024px) {
+            /* For desktops */
+            .video-section iframe {
+                height: 450px; /* Larger height for desktop */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Capacitación</h1>
+</header>
+
+<!-- Container for mobile and desktop views -->
+<div class="container">
+    <!-- Left Side: Banner and Video -->
+    <div class="left-side">
+        <!-- Banner Section -->
+        <section class="banner">
+            <span class="banner-text">Consultar la normativa vigente en materia de importación y exportación referida a la fabricación de equipos electrónicos</span>
+        </section>
+
+        <!-- Video Section -->
+        <section class="video-section">
+            <h2>Importancia del Flujo de Caja y Financiamiento</h2>
+            <iframe 
+                src="https://www.youtube.com/embed/YOUR_VIDEO_ID_HERE" 
+                title="Importancia del Flujo de Caja y Financiamiento"
+                allowfullscreen>
+            </iframe>
+        </section>
+    </div>
+
+    <!-- Right Side: Semiconductor Information -->
+    <div class="right-side">
+        <section class="info-section">
+            <h2>Información Económica del Sector de Semiconductores</h2>
+            <p>
+                El sector de semiconductores es una parte fundamental de la economía tecnológica mundial, con una 
+                demanda creciente en áreas como la inteligencia artificial, telecomunicaciones, automotriz y la 
+                informática en general. Según datos recientes, el mercado de semiconductores en el 2023 obtuvo 
+                ingresos globales que superaron los $533 mil millones de dólares (Statista, 2024). Se espera que este sector continúe 
+                creciendo en la próxima década debido a los avances tecnológicos en los nuevos modelos de inteligencia artificial,
+                5G y vehículos eléctricos.
+            </p>
+            <p>
+                En los últimos años, las principales empresas como Intel, Samsung y TSMC han invertido miles de millones 
+                en la expansión de fábricas y el desarrollo de chips más pequeños y poderosos. Estas inversiones 
+                responden a la creciente demanda de productos electrónicos, desde smartphones hasta computadoras, lo 
+                que hace que la industria sea altamente competitiva y dinámica.
+            </p>
+            <p>
+                Según estudios recientes, México puede desarrollar el eslabón concerniente al ensamblaje y empaquetamiento, sin embargo, las
+                áreas con mayor valor agregado es el diseño y la producción de equipamiento para manufactura, que comprende la litografía,
+                deposición, planarización químico-mecánica, manufactura de obleas, implantadores iónicos, entre otros.
+            </p>
+        </section>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024. Todos los Derechos Reservados.</p>
+</footer>
+
+</body>
+</html>
+
+
+

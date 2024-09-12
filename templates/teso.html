@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;700&family=Material+Icons&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f7;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            margin: 20px;
+        }
+
+        section {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+        }
+
+        .material-icons {
+            font-size: 36px;
+            color: #2c3e50;
+            margin-right: 10px;
+        }
+
+        .financial-products ul,
+        .current-investments ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .financial-products ul li,
+        .current-investments ul li {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            font-size: 1.2rem;
+        }
+
+        .financial-products ul li .material-icons,
+        .current-investments ul li .material-icons {
+            margin-right: 10px;
+        }
+
+        .financial-products ul li button {
+            margin-left: auto;
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .financial-products ul li button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .container {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            section {
+                flex: 1;
+                margin-right: 20px;
+            }
+
+            section:last-child {
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Dashboard de Inversiones</h1>
+</header>
+
+<div class="container">
+    <!-- Financial Products to Invest In Section -->
+    <section class="financial-products">
+        <h2><span class="material-icons">trending_up</span>Recomendaciones</h2>
+        <ul>
+            <li>
+                <span class="material-icons">savings</span>
+                Reporto un día (1.5%)
+                <button>Invertir</button>
+            </li>
+            <li>
+                <span class="material-icons">assessment</span>
+                ETF ASG (5% Anual)
+                <button>Invertir</button>
+            </li>
+            <li>
+                <span class="material-icons">account_balance</span>
+                UDIBONO 20 años (5.8% Anual)
+                <button>Invertir</button>
+            </li>
+            <li>
+                <span class="material-icons">real_estate_agent</span>
+                Nota Estructurada MEXICANA (12% Anual, Calificación AAA)
+                <button>Invertir</button>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Current Investments Section -->
+    <section class="current-investments">
+        <h2><span class="material-icons">account_balance_wallet</span>Actuales</h2>
+        <ul>
+            <li>
+                <span class="material-icons">attach_money</span>
+                Acciones: $100,000 (+10% Year to Day)
+            </li>
+            <li>
+                <span class="material-icons">bar_chart</span>
+                USA Treasury 10 años: $100,000 (4% Anual)
+            </li>
+            <li>
+                <span class="material-icons">real_estate_agent</span>
+                FIBRA E: $50,000 (6.8% Anual)
+            </li>
+            <li>
+                <span class="material-icons">savings</span>
+                Déposito a plazo: $50,000 (2% Anual)
+            </li>
+        </ul>
+    </section>
+</div>
+
+<!-- Line Graph Section for Treasury Bond Interest Rates -->
+<div class="chart-container">
+    <h2><span class="material-icons">timeline</span>Rendimiento del bono 10 y 20 años de EUA (2000 - Presente)</h2>
+    <canvas id="bondRateChart"></canvas>
+</div>
+
+<footer>
+    <p style="text-align: center; padding: 10px; background-color: #2c3e50; color: white;">&copy; 2024. All Rights Reserved.</p>
+</footer>
+
+<script>
+    // Example data for the 10-year and 20-year Treasury bond interest rates since 2000
+    const bondData = {
+        labels: [
+            '2000', '2002', '2004', '2006', '2008', '2010', 
+            '2012', '2014', '2016', '2018', '2020', '2022'
+        ],
+        datasets: [
+            {
+                label: '10-Year Treasury Interest Rate',
+                data: [6.03, 4.61, 4.27, 4.80, 3.67, 3.22, 1.80, 2.55, 1.77, 2.55, 0.89, 1.45],
+                borderColor: '#3498db',
+                backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                borderWidth: 2,
+                fill: true
+            },
+            {
+                label: '20-Year Treasury Interest Rate',
+                data: [6.70, 5.03, 4.69, 5.14, 4.50, 4.15, 2.55, 3.10, 2.85, 3.20, 1.52, 2.00],
+                borderColor: '#e74c3c',
+                backgroundColor: 'rgba(231, 76, 60, 0.2)',
+                borderWidth: 2,
+                fill: true
+            }
+        ]
+    };
+
+    const config = {
+        type: 'line',
+        data: bondData,
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Year'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Interest Rate (%)'
+                    }
+                }
+            }
+        }
+    };
+
+    const bondRateChart = new Chart(
+        document.getElementById('bondRateChart'),
+        config
+    );
+</script>
+
+</body>
+</html>
+
+
